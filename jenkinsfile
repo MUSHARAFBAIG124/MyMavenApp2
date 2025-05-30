@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven' // Make sure 'maven' is configured in Jenkins -> Global Tool Configuration
-        jdk 'jdk11'   // Replace with your configured JDK name
+        maven 'Maven_3'   // <-- Replace with the exact name from Jenkins config
+        jdk 'Java11'      // <-- Replace with the exact name from Jenkins config
     }
 
     stages {
@@ -27,7 +27,6 @@ pipeline {
 
         stage('Run Application') {
             steps {
-                // Match the actual jar name from the Maven build logs
                 sh 'java -jar target/MyMavenApp-1.0-SNAPSHOT.jar'
             }
         }
@@ -42,4 +41,3 @@ pipeline {
         }
     }
 }
-
