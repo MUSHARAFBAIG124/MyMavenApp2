@@ -1,5 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example</groupId>
   <artifactId>MyMavenApp</artifactId>
@@ -7,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>MyMavenApp</name>
   <url>http://maven.apache.org</url>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,56 +18,56 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    
-     <dependency>
-    <groupId>com.google.guava</groupId>
-    <artifactId>guava</artifactId>
-    <version>33.4.0-jre</version>
-     </dependency>
-     
-        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-<dependency>
-    <groupId>commons-io</groupId>
-    <artifactId>commons-io</artifactId>
-    <version>2.18.0</version>
-</dependency>
-    
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>33.4.0-jre</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.18.0</version>
+    </dependency>
   </dependencies>
-  
-  <!-- Build: Configuring plugins and build settings -->
-<build>
-<plugins>
-<!-- Example: Maven Compiler Plugin to compile Java code -->
-<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-compiler-plugin</artifactId>
-<version>3.8.1</version>
-<configuration>
-<source>1.8</source>
-<target>1.8</target>
-</configuration>
-</plugin>
-<!-- Example: Maven Surefire Plugin to run tests -->
-<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-surefire-plugin</artifactId>
-<version>2.22.2</version>
-</plugin>
-<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>MyMavenJenkinsPipeline</artifactId>
-            <version>3.1.0</version>
-            <configuration>
-                <archive>
-                    <manifestEntries>
-                        <Main-Class>com.example.App</Main-Class>
-                    </manifestEntries>
-                </archive>
-            </configuration>
-        </plugin>
-</plugins>
-</build>
+
+  <build>
+    <plugins>
+      <!-- Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
+      <!-- Surefire Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
+      </plugin>
+
+      <!-- ✅ Correct Jar Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>com.example.App</mainClass> <!-- Make sure this is the actual main class -->
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
+
 
 
 
